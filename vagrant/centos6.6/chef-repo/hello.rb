@@ -1,3 +1,5 @@
-file '/tmp/motd' do
-  content 'hello chef'
+directory '/tmp/messages'
+
+file '/tmp/messages/motd' do
+  content 'hello world'
 end
