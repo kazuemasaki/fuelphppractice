@@ -78,7 +78,6 @@ Vagrant.configure("2") do |config|
       recipe[selinux::disabled]
       recipe[php]
       recipe[learn_chef_httpd]
-      recipe[composer]
     ]
   end
 end
