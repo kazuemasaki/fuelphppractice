@@ -9,7 +9,7 @@ bash 'install packages by composer' do
 	code <<-EOC
 		php composer.phar install
 	EOC
-	creates '/var/www//practice/composer.lock'
+	creates '/var/www/practice/composer.lock'
 end
 
 bash 'update packages by composer' do
