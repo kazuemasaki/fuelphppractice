@@ -18,6 +18,10 @@ end
 # 	mode '0755'
 # end
 
+service "iptables" do
+  action [:stop, :disable]
+end
+
 package 'httpd'
 
 service 'httpd' do

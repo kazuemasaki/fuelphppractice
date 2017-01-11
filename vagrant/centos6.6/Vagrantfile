@@ -81,4 +81,9 @@ Vagrant.configure("2") do |config|
       recipe[fuelphp]
     ]
   end
+
+  config.vm.provision :shell, run: "always", :inline => <<-EOT
+    sudo service httpd restart
+  EOT
+
 end
