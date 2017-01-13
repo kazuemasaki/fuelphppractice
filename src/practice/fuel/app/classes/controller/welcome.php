@@ -41,7 +41,7 @@ class Controller_Welcome extends Controller
 	 */
 	public function action_hello()
 	{
-		return Response::forge(Presenter::forge('welcome/hello'));
+		return Response::forge(Presenter::forge('welcome/hello','view',null,'welcome/hello'));
 	}
 
 	/**
