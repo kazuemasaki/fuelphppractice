@@ -55,10 +55,4 @@ class Controller_Welcome extends Controller
 		return Response::forge(Presenter::forge('welcome/404'), 404);
 	}
 
-    public function router($method, $params)
-    {
-    	var_dump($method);
-    	var_dump($params);
-    }
-
 }
