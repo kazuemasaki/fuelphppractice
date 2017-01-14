@@ -55,11 +55,10 @@ class Controller_Welcome extends Controller
 		return Response::forge(Presenter::forge('welcome/404'), 404);
 	}
 
-    public function after($response)
+    public function router($method, $params)
     {
-        $response = parent::after($response); // あなた自身のレスポンスオブジェクトを作成する場合は必要ありません。
-        var_dump($response);
-        return $response; // after() は確実に Response オブジェクトを返すように
+    	var_dump($method);
+    	var_dump($params);
     }
 
 }
