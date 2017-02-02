@@ -18,6 +18,7 @@ end
 # 	mode '0755'
 # end
 
+
 service "iptables" do
   action [:stop, :disable]
 end
@@ -28,3 +29,7 @@ service 'httpd' do
   action [:enable, :start]
 end
 
+template "/etc/httpd/conf.d/rewrite.conf" do
+  source "rewrite.conf.erb"
+  notifies :restart, "service[httpd]"
+end

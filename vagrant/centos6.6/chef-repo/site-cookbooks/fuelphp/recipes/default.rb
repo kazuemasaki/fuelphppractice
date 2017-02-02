@@ -7,15 +7,23 @@
 bash 'install packages by composer' do
 	cwd '/var/www/practice/'
 	code <<-EOC
+		php composer.phar self-update
 		php composer.phar install
 	EOC
 	creates '/var/www/practice/composer.lock'
 end
 
+bash 'install packages by composer' do
+	cwd '/var/www/practice/'
+	code <<-EOC
+		php oil refine install
+	EOC
+end
+
 bash 'update packages by composer' do
 	cwd '/var/www/practice/'
 	code <<-EOC
-		php composer.phar self-update
 		php composer.phar update
 	EOC
 end
+
