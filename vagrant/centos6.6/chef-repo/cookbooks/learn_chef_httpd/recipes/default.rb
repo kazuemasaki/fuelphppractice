@@ -33,3 +33,8 @@ template "/etc/httpd/conf.d/rewrite.conf" do
   source "rewrite.conf.erb"
   notifies :restart, "service[httpd]"
 end
+
+template "/etc/httpd/conf.d/vagrant_nocache.conf" do
+  source "vagrant_nocache.conf.erb"
+  notifies :restart, "service[httpd]"
+end
