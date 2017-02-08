@@ -22,7 +22,7 @@ Ext.define('AM.controller.Users', {
             },
             'useredit button[action=save]': {
                 click: this.updateUser
-            }                
+            }
         });
     },
 
@@ -35,14 +35,14 @@ Ext.define('AM.controller.Users', {
         console.log('Double clicked on ' + record.get('name'));
     },
     updateUser: function(button) {
-		var win    = button.up('window'),
-		    form   = win.down('form'),
-		    record = form.getRecord(),
-		    values = form.getValues();
+        var win    = button.up('window'),
+            form   = win.down('form'),
+            record = form.getRecord(),
+            values = form.getValues();
 
-		record.set(values);
-		win.close();    	
-		// synchronize the store after editing the record
-		this.getUsersStore().sync();
-    }    
+        record.set(values);
+        win.close();
+        // synchronize the store after editing the record
+        this.getUsersStore().sync();
+    }
 });

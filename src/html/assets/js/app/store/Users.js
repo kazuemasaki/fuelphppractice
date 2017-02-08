@@ -5,10 +5,10 @@ Ext.define('AM.store.Users', {
 
     proxy: {
         type: 'ajax',
-	    api: {
-	        read: 'data/users.json',
-	        update: 'data/updateUsers.json'
-	    },
+        api: {
+            read: 'data/users.json',
+            update: 'data/updateUsers.json'
+        },
         reader: {
             type: 'json',
             root: 'users',
