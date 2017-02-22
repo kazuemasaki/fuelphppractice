@@ -7,19 +7,22 @@ Ext.define('AM.view.user.List' ,{
     width: 400,
     height: 200,
     title: 'Container Panel',
-    layout: 'column',
+    layout: 'absolute',
     items: [
         {
             xtype: 'panel',
             title: 'Child Panel 1',
             height: 100,
-            columnWidth: 0.5
+            x: 50,
+            y: 50,
         },
         {
             xtype: 'panel',
             title: 'Child Panel 2',
-            height: 100,
-            columnWidth: 0.5
+            height:200,
+            width:100,
+            x: 250,
+            y: 350,
         }
     ]
 
