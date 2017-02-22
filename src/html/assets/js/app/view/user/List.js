@@ -7,21 +7,20 @@ Ext.define('AM.view.user.List' ,{
     width: 400,
     height: 200,
     title: 'Container Panel',
-    layout: 'accordion',
-    layoutConfig: {
-        // layout-specific configs go here
-        titleCollapse: false,
-        animate: true,
-        activeOnTop: true
-    },
-    items:[{
+    layout: 'anchor',
+    items: [{
         title: 'Panel 1',
-        html: 'Content',
+        height: 100,
+        anchor: '50%'
     },{
         title: 'Panel 2',
-        id: 'panel2',
-        html: 'Content'
+        height: 100,
+        anchor: '-10'
+    },{
+        title: 'Panel 3',
+        anchor: '-100, -262'
     }]
+
     // title: 'All Users',
 
     // store: 'Users',
