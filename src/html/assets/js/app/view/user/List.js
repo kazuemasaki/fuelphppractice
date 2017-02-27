@@ -8,43 +8,20 @@ Ext.define('AM.view.user.List' ,{
     height: 200,
     title: 'Container Panel',
 
-    layout: 'border',
-    bodyBorder: false,
-    defaults: {
-        collapsible: true,
-        split: true,
-        bodyPadding: 15
-    },
-    items: [{
-        title: 'Navigation',
-        region:'west',
-        floatable: false,
-        margins: '5 0 0 0',
-        width: 175,
-        minWidth: 100,
-        maxWidth: 250,
-        html: 'Secondary content like navigation links could go here'
+    xtype: 'tabpanel',
+    layout: 'card',
+    activeTab: 0, // index or id
+    items:[{
+        title: 'Tab 1',
+        html: 'This is tab 1 content.'
     },{
-        title: 'heder',
-        region: 'north',
-        height: 150,
-        minHeight: 75,
-        maxHeight: 250,
-        html: 'header content'
+        title: 'Tab 2',
+        html: 'This is tab 2 content.'
     },{
-        title: 'Footer',
-        region: 'south',
-        height: 150,
-        minHeight: 75,
-        maxHeight: 250,
-        html: 'Footer content'
-    },{
-        title: 'Main Content',
-        collapsible: false,
-        region: 'center',
-        margins: '5 0 0 0',
-        html: 'Main PageThis is where the main content would go'
+        title: 'Tab 3',
+        html: 'This is tab 3 content.'
     }]
+
 
 
     // title: 'All Users',
