@@ -15,20 +15,12 @@ Ext.define('AM.view.user.List' ,{
     width: 400,
     height: 200,
 
-    layout:'column',
-    items: [{
-        title: 'Width = 25%',
-        columnWidth: .25,
-        html: 'Content'
-    },{
-        title: 'Width = 75%',
-        columnWidth: .75,
-        html: 'Content'
-    },{
-        title: 'Width = 250px',
-        width: 250,
-        html: 'Content'
-    }]
+    layout:'fit',
+    items: {
+        title: 'Fit Panel',
+        html: 'Content',
+        border: false
+    }
              
     // title: 'All Users',
 
