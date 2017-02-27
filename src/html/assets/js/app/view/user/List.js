@@ -1,3 +1,11 @@
+    var cardNav = function(incr){
+        var l = Ext.getCmp('card-wizard-panel').getLayout();
+        var i = l.activeItem.id.split('card-')[1];
+        var next = parseInt(i, 10) + incr;
+        l.setActiveItem(next);
+        Ext.getCmp('card-prev').setDisabled(next===0);
+        Ext.getCmp('card-next').setDisabled(next===2);
+    };
 Ext.define('AM.view.user.List' ,{
     // extend: 'Ext.grid.Panel',
     extend: 'Ext.panel.Panel',
@@ -6,23 +14,31 @@ Ext.define('AM.view.user.List' ,{
     renderTo: Ext.getBody(),
     width: 400,
     height: 200,
-    title: 'Container Panel',
-
-    xtype: 'tabpanel',
-    layout: 'card',
-    activeTab: 0, // index or id
-    items:[{
-        title: 'Tab 1',
-        html: 'This is tab 1 content.'
+    title: 'Card Layout (Wizard)',
+    layout:'card',
+    activeItem: 0,
+    bodyStyle: 'padding:15px',
+    defaults: {border:false},
+    bbar: ['->', {
+        id: 'card-prev',
+        text: '&laquo; Previous',
+        handler: Ext.Function.bind(cardNav, this, [-1]),
+        disabled: true
     },{
-        title: 'Tab 2',
-        html: 'This is tab 2 content.'
+        id: 'card-next',
+        text: 'Next &raquo;',
+        handler: Ext.Function.bind(cardNav, this, [1])
+    }],
+    items: [{
+        id: 'card-0',
+        html: '<h1>Welcome to the Demo Wizard!</h1><p>Step 1 of 3</p><p>Please click the "Next" button to continue...</p>'
     },{
-        title: 'Tab 3',
-        html: 'This is tab 3 content.'
+        id: 'card-1',
+        html: '<p>Step 2 of 3</p><p>Almost there.  Please click the "Next" button to continue...</p>'
+    },{
+        id: 'card-2',
+        html: '<h1>Congratulations!</h1><p>Step 3 of 3 - Complete</p>'
     }]
-
-
 
     // title: 'All Users',
 
