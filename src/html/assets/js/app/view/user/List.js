@@ -15,12 +15,44 @@ Ext.define('AM.view.user.List' ,{
     width: 400,
     height: 200,
 
-    layout:'fit',
-    items: {
-        title: 'Fit Panel',
-        html: 'Content',
-        border: false
-    }
+    layout: {
+        type: 'table',
+        columns: 4
+    },
+    defaults: {
+        bodyStyle:'padding:15px 20px',
+        border: true
+    },
+    items: [
+        {
+            title: 'Lots of Spanning',
+            html: '<p>Row spanning.</p><br /><p>Row spanning.</p><br /><p>Row spanning.</p><br /><p>Row spanning.</p><br /><p>Row spanning.</p><br /><p>Row spanning.</p>',
+            rowspan: 3
+        },{
+            title: 'Basic Table Cell',
+            html: '<p>Basic panel in a table cell.</p>',
+            cellId: 'basic-cell',
+            cellCls: 'custom-cls'
+        },{
+            html: '<p>Plain panel</p>'
+        },{
+            title: 'Another Cell',
+            html: '<p>Row spanning.</p><br /><p>Row spanning.</p><br /><p>Row spanning.</p><br /><p>Row spanning.</p>',
+            width: 300,
+            rowspan: 2
+        },{
+            html: 'Plain cell spanning two columns',
+            colspan: 2
+        },{
+            title: 'More Column Spanning',
+            html: '<p>Spanning three columns.</p>',
+            colspan: 3
+        },{
+            title: 'Spanning All Columns',
+            html: '<p>Spanning all columns.</p>',
+            colspan: 4
+        }
+    ]
              
     // title: 'All Users',
 
