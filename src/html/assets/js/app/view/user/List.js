@@ -16,43 +16,29 @@ Ext.define('AM.view.user.List' ,{
     height: 200,
 
     layout: {
-        type: 'table',
-        columns: 4
+        type: 'vbox',
+        pack: 'start',
+        align: 'stretch'
     },
     defaults: {
-        bodyStyle:'padding:15px 20px',
-        border: true
+        frame: true
     },
-    items: [
-        {
-            title: 'Lots of Spanning',
-            html: '<p>Row spanning.</p><br /><p>Row spanning.</p><br /><p>Row spanning.</p><br /><p>Row spanning.</p><br /><p>Row spanning.</p><br /><p>Row spanning.</p>',
-            rowspan: 3
-        },{
-            title: 'Basic Table Cell',
-            html: '<p>Basic panel in a table cell.</p>',
-            cellId: 'basic-cell',
-            cellCls: 'custom-cls'
-        },{
-            html: '<p>Plain panel</p>'
-        },{
-            title: 'Another Cell',
-            html: '<p>Row spanning.</p><br /><p>Row spanning.</p><br /><p>Row spanning.</p><br /><p>Row spanning.</p>',
-            width: 300,
-            rowspan: 2
-        },{
-            html: 'Plain cell spanning two columns',
-            colspan: 2
-        },{
-            title: 'More Column Spanning',
-            html: '<p>Spanning three columns.</p>',
-            colspan: 3
-        },{
-            title: 'Spanning All Columns',
-            html: '<p>Spanning all columns.</p>',
-            colspan: 4
-        }
-    ]
+    items: [{
+        title: 'Panel 1',
+        flex: 1,
+        margin: '0 0 10 0',
+        html: 'flex : 1'
+    }, {
+        title: 'Panel 2',
+        height: 100,
+        margin: '0 0 10 0',
+        html: 'height: 100'
+    }, {
+        title: 'Panel 3',
+        flex: 2,
+        html: 'flex : 2'
+    }]
+
              
     // title: 'All Users',
 
