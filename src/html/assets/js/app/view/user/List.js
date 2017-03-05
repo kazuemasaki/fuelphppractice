@@ -16,7 +16,7 @@ Ext.define('AM.view.user.List' ,{
     height: 200,
 
     layout: {
-        type: 'vbox',
+        type: 'hbox',
         pack: 'start',
         align: 'stretch'
     },
@@ -26,19 +26,18 @@ Ext.define('AM.view.user.List' ,{
     items: [{
         title: 'Panel 1',
         flex: 1,
-        margin: '0 0 10 0',
+        margin: '0 0 0 0',
         html: 'flex : 1'
     }, {
         title: 'Panel 2',
-        height: 100,
-        margin: '0 0 10 0',
-        html: 'height: 100'
+        width: 100,
+        margin: '0 0 0 0',
+        html: 'width : 100'
     }, {
         title: 'Panel 3',
         flex: 2,
         html: 'flex : 2'
     }]
-
              
     // title: 'All Users',
 
