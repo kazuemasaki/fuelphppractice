@@ -17,9 +17,9 @@ var panel2 = Ext.create('Ext.panel.Panel', {
     html: 'Test Panel2',
     draggable:true,
     shadow:false,
-    initComponent:function(){
-        console.log("initComponent");
-    },
+    // initComponent:function(){
+    //     console.log("initComponent");
+    // },
     beforeShow:function(){
         console.log("beforeShow");
     },
