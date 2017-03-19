@@ -1,81 +1,49 @@
-var panel = Ext.create('Ext.panel.Panel', {
-    renderTo: Ext.getBody(),
-    title: 'Test',
-    html: 'Test Panel',
-    hideMode: 'visibility' // use the CSS visibility property to show and hide this component
-});
+Ext.define('Ext.ux.Image', {
+    extend: 'Ext.Component', // subclass Ext.Component
+    alias: 'widget.managedimage', // this component will have an xtype of 'managedimage'
+    autoEl: {
+        tag: 'img',
+        src: Ext.BLANK_IMAGE_URL,
+        cls: 'my-managed-image'
+    },
 
-panel.hide(); // hide the component
+    // Add custom processing to the onRender phase.
+    // Add a ‘load’ listener to the element.
+    onRender: function() {
+        this.autoEl = Ext.apply({}, this.initialConfig, this.autoEl);
+        this.callParent(arguments);
+        this.el.on('load', this.onLoad, this);
+    },
 
-panel.show(); // show the component
+    onLoad: function() {
+        this.fireEvent('load', this);
+    },
 
-var panel2 = Ext.create('Ext.panel.Panel', {
-    width: 200,
-    height: 100,
-    floating: true, // make this panel an absolutely-positioned floating component
-    title: 'Test',
-    html: 'Test Panel2',
-    draggable:true,
-    shadow:false,
-    // initComponent:function(){
-    //     console.log("initComponent");
-    // },
-    beforeShow:function(){
-        console.log("beforeShow");
+    setSrc: function(src) {
+        if (this.rendered) {
+            this.el.dom.src = src;
+        } else {
+            this.src = src;
+        }
     },
-    onShow:function(){
-        console.log("onShow");
-    },
-    afterShow:function(){
-        console.log("afterShow");
-    },
-    onShowComplete:function(){
-        console.log("onShowComplete");
-    },
-    afterHide:function(){
-        console.log("afterHide");
-    },
-    onRender:function(){
-        console.log("onRender");
-    },
-    afterRender:function(){
-        console.log("afterRender");
-    },
-    onEnable:function(){
-        console.log("onEnable");
-    },
-    onDisable:function(){
-        console.log("onDisable");
-    },
-    onAdded:function(){
-        console.log("onAdded");
-    },
-    onRemoved:function(){
-        console.log("onRemoved");
-    },
-    onResize:function(){
-        console.log("onResize");
-    },
-    onPosition:function(){
-        console.log("onPosition");
-    },
-    onDestroy:function(){
-        console.log("onDestroy");
-    },
-    beforeDestroy:function(){
-        console.log("beforeDestroy");
-    },
-    afterSetPosition:function(){
-        console.log("afterSetPosition");
-    },
-    afterComponentLayout:function(){
-        console.log("afterComponentLayout");
-    },
-    beforeComponentLayout:function(){
-        console.log("beforeComponentLayout");
+
+    getSrc: function(src) {
+        return this.el.dom.src || this.src;
     }
-
 });
-panel2.show();
-panel2.center();
+var image = Ext.create('Ext.ux.Image');
+var image2 = Ext.create('Ext.ux.Image');
 
+Ext.create('Ext.panel.Panel', {
+    title: 'Image Panel',
+    height: 200,
+    renderTo: Ext.getBody(),
+    items: [ image ,image2]
+});
+
+image.on('load', function() {
+    console.log('image loaded: ', image.getSrc());
+});
+
+image.setSrc('http://www.sencha.com/img/sencha-large.png');
+image2.setSrc('http://www.sencha.com/img/sencha-large.png');
