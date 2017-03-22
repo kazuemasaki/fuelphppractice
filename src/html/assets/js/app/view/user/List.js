@@ -13,9 +13,9 @@ Ext.define('User', {
 });
 
 var newUser = Ext.create('User', {
-    name: 'admin',
-    age: 'twenty-nine',
-    gender: 'not a valid gender'
+    name: 'admina',
+    age: '29',
+    gender: 'male'
 });
 
 // run some validation on the new user we just created
