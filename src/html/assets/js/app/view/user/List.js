@@ -1,49 +1,27 @@
-Ext.define('Ext.ux.Image', {
-    extend: 'Ext.Component', // subclass Ext.Component
-    alias: 'widget.managedimage', // this component will have an xtype of 'managedimage'
-    autoEl: {
-        tag: 'img',
-        src: Ext.BLANK_IMAGE_URL,
-        cls: 'my-managed-image'
-    },
+Ext.define('User', {
+    extend: 'Ext.data.Model',
+    fields: ['name', 'age', 'gender'],
 
-    // Add custom processing to the onRender phase.
-    // Add a ‘load’ listener to the element.
-    onRender: function() {
-        this.autoEl = Ext.apply({}, this.initialConfig, this.autoEl);
-        this.callParent(arguments);
-        this.el.on('load', this.onLoad, this);
-    },
+    validations: [
+        {type: 'presence', name: 'name'},
+        {type: 'length',   name: 'name', min: 5},
+        {type: 'format',   name: 'age', matcher: /\d+/},
+        {type: 'inclusion', name: 'gender', list: ['male', 'female']},
+        {type: 'exclusion', name: 'name', list: ['admin']}
+    ]
 
-    onLoad: function() {
-        this.fireEvent('load', this);
-    },
-
-    setSrc: function(src) {
-        if (this.rendered) {
-            this.el.dom.src = src;
-        } else {
-            this.src = src;
-        }
-    },
-
-    getSrc: function(src) {
-        return this.el.dom.src || this.src;
-    }
-});
-var image = Ext.create('Ext.ux.Image');
-var image2 = Ext.create('Ext.ux.Image');
-
-Ext.create('Ext.panel.Panel', {
-    title: 'Image Panel',
-    height: 200,
-    renderTo: Ext.getBody(),
-    items: [ image ,image2]
 });
 
-image.on('load', function() {
-    console.log('image loaded: ', image.getSrc());
+var newUser = Ext.create('User', {
+    name: 'admin',
+    age: 'twenty-nine',
+    gender: 'not a valid gender'
 });
 
-image.setSrc('http://www.sencha.com/img/sencha-large.png');
-image2.setSrc('http://www.sencha.com/img/sencha-large.png');
+// run some validation on the new user we just created
+var errors = newUser.validate();
+
+console.log('Is User valid?', errors.isValid()); //returns 'false' as there were validation errors
+console.log('All Errors:', errors.items); //returns the array of all errors found on this model instance
+
+console.log('Age Errors:', errors.getByField('age')); //returns the errors for the age field
